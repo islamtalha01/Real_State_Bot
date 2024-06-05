@@ -1,22 +1,20 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import {
-    Bars3Icon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline'
+import { Fragment, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { usePathname } from 'next/navigation';
-import {classNames} from "@/utils/classNames";
-import {navigation} from "@/data/nativagation";
+import { classNames } from "@/utils/classNames";
+import { navigation } from "@/data/nativagation";
 
 export default function Sidebar() {
-    const [sidebarOpen, setSidebarOpen] = useState(false)
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     const pathname = usePathname();
 
     return (
         <>
             {/* Static sidebar for mobile */}
             <Transition.Root show={sidebarOpen} as={Fragment}>
-                <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden" onClose={setSidebarOpen}>
+                <Dialog as="div" className="fixed inset-0 flex z-40 md:hidden m-9" onClose={setSidebarOpen}>
+                    
                     <Transition.Child
                         as={Fragment}
                         enter="transition-opacity ease-linear duration-300"
@@ -26,7 +24,7 @@ export default function Sidebar() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Dialog.Overlay className="fixed inset-0 bg-accents-0 bg-opacity-50" />
+                        <Dialog.Overlay className="fixed inset-0 bg-[#2E2E2E] bg-opacity-50" />
                     </Transition.Child>
                     <Transition.Child
                         as={Fragment}
@@ -37,7 +35,7 @@ export default function Sidebar() {
                         leaveFrom="translate-x-0"
                         leaveTo="-translate-x-full"
                     >
-                        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-accents-0">
+                        <div className="relative flex-1 flex flex-col max-w-xs w-full bg-[#2E2E2E] rounded-lg shadow-lg shadow-black">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-in-out duration-300"
@@ -50,7 +48,7 @@ export default function Sidebar() {
                                 <div className="absolute top-0 right-0 -mr-12 pt-2">
                                     <button
                                         type="button"
-                                        className="ml-1 flex items-center justify-center h-10 w-10 bg-accents-1 rounded-full focus:outline-none"
+                                        className="ml-1 flex items-center justify-center h-10 w-10 bg-[#2E2E2E] rounded-full focus:outline-none"
                                         onClick={() => setSidebarOpen(false)}
                                     >
                                         <span className="sr-only">Close sidebar</span>
@@ -59,28 +57,19 @@ export default function Sidebar() {
                                 </div>
                             </Transition.Child>
                             <div className="flex-1 h-0 pb-4 overflow-y-auto pt-3">
-                                <span className="font-medium text-gray-400 text-sm px-2">Templates</span>
-                                <nav className="p-2 space-y-1">
-                                    {navigation.map((item) => (
-                                        <a
-                                            key={item.name}
-                                            href={item.href}
-                                            className={classNames(
-                                                item.href === pathname ? 'bg-accents-1 text-white' : 'text-gray-300 hover:bg-accents-1 hover:text-white',
-                                                'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                                            )}
-                                        >
-                                            <item.icon
-                                                className={classNames(
-                                                    item.href === pathname ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                                                    'mr-4 flex-shrink-0 h-6 w-6'
-                                                )}
-                                                aria-hidden="true"
-                                            />
-                                            {item.name}
+                                {/* <span className="font-medium text-gray-400 text-sm px-2">Templates</span> */}
+                                
+                                <div className="flex items-center justify-between border-b border-[#f2f2f2] pb-3 duration-300 dark:border-[#484848]">
+                                    <div className="flex items-center">
+                                        <a className="group flex items-center p-2" href="/">
+                                        <img alt="Devin" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" className="rounded-md text-transparent" src="https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzJmNnMwaGJMelpSdEY3cGwwaGlBbEliNFNYaCJ9?width=200" />
+                                        <div className="flex w-full flex-1 items-center duration-300 opacity-100">
+                                            <h1 className="relative ml-2 block w-fit text-xl font-bold leading-6 after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-black after:transition after:duration-200 after:content-[''] after:hover:scale-x-100 dark:text-white dark:after:bg-white">Real Estate Genius
+</h1>
+                                        </div>
                                         </a>
-                                    ))}
-                                </nav>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </Transition.Child>
@@ -89,18 +78,34 @@ export default function Sidebar() {
             </Transition.Root>
 
             {/* Static sidebar for desktop */}
-            <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 border-r border-accents-2">
+            <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 m-8">
                 {/* Sidebar component, swap this element with another sidebar if you like */}
-                <div className="flex-1 flex flex-col min-h-0 bg-accents-0">
+
+                
+                <div className="flex-1 flex flex-col min-h-0 bg-[#2E2E2E] rounded-lg shadow-lg shadow-black">
+
+
+<div className="flex items-center justify-between border-b border-[#f2f2f2] pb-3 duration-300 dark:border-[#484848]">
+  <div className="flex items-center">
+    <a className="group flex items-center p-2" href="/">
+      <img alt="Devin" loading="lazy" width="24" height="24" decoding="async" data-nimg="1" className="rounded-md text-transparent" src="https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvdXBsb2FkZWQvaW1nXzJmNnMwaGJMelpSdEY3cGwwaGlBbEliNFNYaCJ9?width=200" />
+      <div className="flex w-full flex-1 items-center duration-300 opacity-100">
+        <h1 className="relative ml-2 block w-fit text-xl font-bold leading-6 after:absolute after:block after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-black after:transition after:duration-200 after:content-[''] after:hover:scale-x-100 dark:text-white dark:after:bg-white">Real Estate Genius
+</h1>
+      </div>
+    </a>
+  </div>
+</div>
+
                     <div className="flex-1 flex flex-col pb-4 overflow-y-auto">
-                        <span className="font-medium text-gray-400 text-sm px-2 pt-3">Templates</span>
-                        <nav className="flex-1 p-2 space-y-1">
+                        {/* <span ClassNameName="font-medium text-gray-400 text-sm px-2 pt-3">Templates</span> */}
+                        {/* <nav className="flex-1 p-2 space-y-1">
                             {navigation.map((item) => (
                                 <a
                                     key={item.name}
                                     href={item.href}
                                     className={classNames(
-                                        item.href === pathname ? 'bg-accents-1 text-white' : 'text-gray-300 hover:bg-accents-1 hover:text-white',
+                                        item.href === pathname ? 'bg-[#2E2E2E] text-white' : 'text-gray-300 hover:text-white',
                                         'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
                                     )}
                                 >
@@ -114,13 +119,13 @@ export default function Sidebar() {
                                     {item.name}
                                 </a>
                             ))}
-                        </nav>
+                        </nav> */}
                     </div>
                 </div>
             </div>
 
             {/* Static header for mobile */}
-            <div className="md:hidden fixed z-10 w-full bg-accents-0 border-b border-accents-2">
+            <div className="md:hidden fixed z-10 w-full bg-[#2E2E2E] border-b border-gray-700">
                 <div className="flex">
                     <button
                         type="button"
@@ -133,5 +138,5 @@ export default function Sidebar() {
                 </div>
             </div>
         </>
-    )
+    );
 }
